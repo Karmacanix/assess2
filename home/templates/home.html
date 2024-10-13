@@ -1,0 +1,36 @@
+{% extends "site-base.html" %}
+
+{% load static %}
+{% load account %}
+{% load i18n %}
+
+{% block head_title %}{% trans "Home" %}{% endblock %}
+
+{% block content %}
+
+  <!-- Header -->
+   <!-- Header -->
+  <div class="w3-container w3-margin-top">
+    <header class="w3-black w3-opacity w3-padding-16">
+      <h1 class="w3-margin">3DHB App Accreditation Service</h1>
+    </header>
+    <br>
+    <div class="w3-row">
+      <div class="w3-col m8 l8">
+  
+        <h1 class="w3-padding-16">Want to use a mobile app for work?
+        Want to get your team working on a web-based project management tool? Need to access a cloud based collaboration tool to connect with other medical professionals. </h1>
+      </div>
+      <h2>Don't know what mobile apps you can and can't use. Don't know if they will meet the high privacy and security standards?</h2>
+      <div class="w3-col m4 l4">
+        <h3 class="w3-center"><i class="fa fa-plus fa-3x w3-padding-16 w3-text-red"></i></h3>
+      </div>
+    </div>
+    <h2 class="w3-padding-16">We need to make sure it's private, secure and compliant.</h2>
+    <h3 class="w3-text-grey w3-padding-16"><strong><a href="{% url 'assessment:application-create' %}">Answer a few questions.</a> We'll assess the risks, approve it for hospital use & we'll publish it to <a href="{% url 'assessment:application-list' %}">our list of available apps.</a></strong></h3>
+     <a class="w3-btn w3-red w3-padding-large w3-jumbo" href="{% url 'assessment:application-create' %}"><strong>ASSESS APPLICATION</strong></a>
+  </div>
+  
+
+
+{% endblock %}

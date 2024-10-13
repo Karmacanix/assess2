@@ -1,0 +1,27 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account %}
+
+{% block head_title %}{% trans "Log out" %}{% endblock %}
+
+{% block content %}
+<!-- Header -->
+<div class="w3-container w3-margin-top">
+  <header class="w3-black w3-opacity w3-padding-16">
+    <h1 class="w3-margin">Log out</h1>
+  </header>
+  
+    <br>
+	<p>{% trans 'Are you sure you want to log out?' %}</p>
+
+<form method="post" action="{% url 'account_logout' %}">
+  {% csrf_token %}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+  {% endif %}
+  <button type="submit">{% trans 'Sign Out' %}</button>
+</form>
+</div>
+
+{% endblock %}
