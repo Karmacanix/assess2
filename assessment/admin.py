@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 from simple_history.admin import SimpleHistoryAdmin
-from .models import Application, InformationClassification, DHBs, ApplicationType, TechInstall, TechDelivery 
+from .models import Application, InformationClassification, BusinessUnit, ApplicationType, TechInstall, TechDelivery 
 
 
 class ApplicationHistoryAdmin(SimpleHistoryAdmin):
@@ -23,7 +23,7 @@ class ApplicationTypeHistoryAdmin(SimpleHistoryAdmin):
     search_fields = ['name', ]
 
 
-class DHBsHistoryAdmin(SimpleHistoryAdmin):
+class BusinessUnitHistoryAdmin(SimpleHistoryAdmin):
     list_display = ["name", ]
     history_list_display = ["name",]
     search_fields = ['name', ]
@@ -44,6 +44,6 @@ class TechInstallAdmin(SimpleHistoryAdmin):
 admin.site.register(Application, ApplicationHistoryAdmin)
 admin.site.register(InformationClassification, InformationClassicationHistoryAdmin)
 admin.site.register(ApplicationType, ApplicationTypeHistoryAdmin)
-admin.site.register(DHBs, DHBsHistoryAdmin)
+admin.site.register(BusinessUnit, BusinessUnitHistoryAdmin)
 admin.site.register(TechDelivery, TechDeliveryAdmin)
 admin.site.register(TechInstall, TechInstallAdmin)

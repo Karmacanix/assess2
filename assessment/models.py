@@ -9,7 +9,7 @@ from django_countries.fields import CountryField
 from simple_history.models import HistoricalRecords
 
 # Create your models here.
-class DHBs(models.Model):
+class BusinessUnit(models.Model):
 	name = models.CharField(max_length=30)
 
 	def __str__(self):
@@ -62,7 +62,7 @@ class Application(models.Model):
 		('H', 'High Impact Risk'),
 		('E', 'Extreme Risk'),
 	)
-	dhbs = models.ManyToManyField(DHBs)
+	businessunit = models.ManyToManyField(BusinessUnit)
 	security_decision = models.CharField(
 		max_length=1,
 		choices=RISK_RATING,
@@ -157,20 +157,20 @@ class ICTRiskAssessment(models.Model):
 		('TENTHOUSANDS', '10,000s'),
 		('HUNDREDTHOUSANDS', '100,000s'),
 	)
-	dhb_record_volume = models.CharField(max_length=16, choices=RECORD_CHOICES, default='TENS', help_text="3. Provide an estimate of the number of records we expect to store in the application on an annual basis.")
+	bu_record_volume = models.CharField(max_length=16, choices=RECORD_CHOICES, default='TENS', help_text="3. Provide an estimate of the number of records we expect to store in the application on an annual basis.")
 	DOWNTIME_CHOICES = (
 		('H', 'Hours'),
 		('D', 'Days'),
 		('M', 'Months'),
 		('I', 'Indefinitely')
 	)
-	dhb_downtime_before_critical = models.CharField(max_length=1, choices=DOWNTIME_CHOICES, default='H', help_text="4. We can be without this app before our service can no longer function properly. Specify the time interval.")
+	bu_downtime_before_critical = models.CharField(max_length=1, choices=DOWNTIME_CHOICES, default='H', help_text="4. We can be without this app before our service can no longer function properly. Specify the time interval.")
 	UNSURE_CHOICES = (
 		('Y', 'Yes'),
 		('N', 'No'),
 		('U', 'Unsure'),
 	)
-	dhb_log_data_changes = models.CharField(max_length=1, choices=UNSURE_CHOICES, default='U', help_text="5. We will be able to notice if someone accidentally or maliously alters our data stored in the cloud service.")
+	bu_log_data_changes = models.CharField(max_length=1, choices=UNSURE_CHOICES, default='U', help_text="5. We will be able to notice if someone accidentally or maliously alters our data stored in the cloud service.")
 	CONVENIENCE_CHOICES = (
 		('N', 'None'),
 		('I', 'Inconvenience'),
@@ -179,11 +179,11 @@ class ICTRiskAssessment(models.Model):
 		('S', 'Significant economic loss'),
 		('H', 'Human life endangered'),
 	)
-	dhb_small_data_loss = models.CharField(max_length=1, choices=CONVENIENCE_CHOICES, default='N', help_text="6. The effect of someone accidentally or malciously altering a SMALL amount of our data stored in the cloud service.")
-	dhb_large_data_loss = models.CharField(max_length=1, choices=CONVENIENCE_CHOICES, default='N', help_text="7. The effect of someone accidentally or malciously altering a LARGE amount of our data stored in the cloud service.")
-	dhb_breach_plan = models.CharField(max_length=1, choices=UNSURE_CHOICES, default='U', help_text="8. We have a plan we can put into effect if we learn that there has been a privacy or security breach concerning our data stored in the cloud service.")
-	dhb_disrupt_plan = models.CharField(max_length=1, choices=UNSURE_CHOICES, default='U', help_text="9. We have a plan we can put into effect if the cloud service is disrupted for an extended period.")
-	dhb_perm_loss = models.CharField(max_length=1, choices=UNSURE_CHOICES, default='U', help_text="10. We have a plan we can put into effect if the cloud service loses our data permanently.")
+	bu_small_data_loss = models.CharField(max_length=1, choices=CONVENIENCE_CHOICES, default='N', help_text="6. The effect of someone accidentally or malciously altering a SMALL amount of our data stored in the cloud service.")
+	bu_large_data_loss = models.CharField(max_length=1, choices=CONVENIENCE_CHOICES, default='N', help_text="7. The effect of someone accidentally or malciously altering a LARGE amount of our data stored in the cloud service.")
+	bu_breach_plan = models.CharField(max_length=1, choices=UNSURE_CHOICES, default='U', help_text="8. We have a plan we can put into effect if we learn that there has been a privacy or security breach concerning our data stored in the cloud service.")
+	bu_disrupt_plan = models.CharField(max_length=1, choices=UNSURE_CHOICES, default='U', help_text="9. We have a plan we can put into effect if the cloud service is disrupted for an extended period.")
+	bu_perm_loss = models.CharField(max_length=1, choices=UNSURE_CHOICES, default='U', help_text="10. We have a plan we can put into effect if the cloud service loses our data permanently.")
 
 	def _get_help_text(self, field_name):
 
