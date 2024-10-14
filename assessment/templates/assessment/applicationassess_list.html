@@ -24,7 +24,7 @@
         <tr class="w3-light-grey">
           <th>{% trans "Name" %}</th>
           <th>{% trans "Purpose" %}</th>
-          <th>{% trans "DHB(s)" %}</th>
+          <th>{% trans "BusinessUnit(s)" %}</th>
           <th>{% trans "Type(s)" %}</th>
           <th>{% trans "ICT Security" %}</th>
           <th>{% trans "Privacy Officer" %}</th>
@@ -38,8 +38,8 @@
         <tr>
           <td><a class="w3-text-indigo" href="{% url 'assessment:application-security-assess' application.name %}">{{ application.name }}</a></td>
           <td>{{ application.purpose }}</td>
-          <td>{% for dhb in application.dhbs.all %}
-            {{ dhb.name }}{% if forloop.last %}.{% else %},{% endif %}
+          <td>{% for businessunit in application.businessunit.all %}
+            {{ businessunit.name }}{% if forloop.last %}.{% else %},{% endif %}
           {% endfor %}</td>
           <td>{% for application_type in application.application_type.all %}
             {% autoescape off %} {{ application_type.icon_html }}{% endautoescape %}{{ application_type.name }}
@@ -65,7 +65,7 @@
         <tr class="w3-light-grey">
           <th>{% trans "Name" %}</th>
           <th>{% trans "Purpose" %}</th>
-          <th>{% trans "DHB(s)" %}</th>
+          <th>{% trans "BusinessUnit(s)" %}</th>
           <th class="w3-center">{% trans "App" %}<br>{% trans "Type(s)" %}</th>
           <th class="w3-center">{% trans "ICT" %}<br>{% trans "Security" %}</th>
           <th class="w3-center">{% trans "Privacy" %}<br>{% trans "Officer" %}</th>
@@ -79,8 +79,8 @@
         <tr>
           <td><a class="w3-text-indigo" href="{% url 'assessment:application-privacy-assess' application.name %}">{{ application.name }}</a></td>
           <td>{{ application.purpose }}</td>
-          <td>{% for dhb in application.dhbs.all %}
-            {{ dhb.name }}{% if forloop.last %}.{% else %},{% endif %}
+          <td>{% for businessunit in application.businessunit.all %}
+            {{ businessunit.name }}{% if forloop.last %}.{% else %},{% endif %}
           {% endfor %}</td>
           <td>{% for application_type in application.application_type.all %}
             {% autoescape off %} {{ application_type.icon_html }}{% endautoescape %}{{ application_type.name }}
@@ -106,7 +106,7 @@
         <tr class="w3-light-grey">
           <th>{% trans "Name" %}</th>
           <th>{% trans "Purpose" %}</th>
-          <th>{% trans "DHB(s)" %}</th>
+          <th>{% trans "BusinessUnit(s)" %}</th>
           <th>{% trans "Type(s)" %}</th>
           <th>{% trans "ICT Security" %}</th>
           <th>{% trans "Privacy Officer" %}</th>
@@ -120,8 +120,8 @@
         <tr>
           <td><a class="w3-text-indigo" href="{% url 'assessment:application-clinical-assess' application.name %}">{{ application.name }}</a></td>
           <td>{{ application.purpose }}</td>
-          <td>{% for dhb in application.dhbs.all %}
-            {{ dhb.name }}{% if forloop.last %}.{% else %},{% endif %}
+          <td>{% for businessunit in application.businessunit.all %}
+            {{ businessunit.name }}{% if forloop.last %}.{% else %},{% endif %}
           {% endfor %}</td>
           <td>{% for application_type in application.application_type.all %}
             {% autoescape off %} {{ application_type.icon_html }}{% endautoescape %}{{ application_type.name }}

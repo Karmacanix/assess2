@@ -1,0 +1,3 @@
+{% if request.user|has_group:"security" or request.user|has_group:"privacy" or request.user|has_group:"clinical"%}
+
+{% if request.user.is_staff %}
